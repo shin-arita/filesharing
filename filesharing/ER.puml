@@ -1,0 +1,39 @@
+@startuml file_sharing
+ hide circle
+
+ entity "グループ" as groups {
+	 + ID [PK]
+	 --
+	 名称
+	 利用開始日付
+	 利用終了日付
+	 利用可能ディスクサイズ
+ }
+
+ entity "ユーザ" as users {
+	 + ID [PK]
+	 --
+	 名称
+	 グループID [FK]
+ }
+
+ entity "書庫" as archives {
+	 + ID [PK]
+	 --
+	 アップロードユーザID [FK]
+	 メール件名
+	 メール本文
+	 ダウンロード有効期限日付
+	 名称
+	 サイズ
+ }
+
+ entity "書庫-ファイル" as archive_files {
+	 + ID [PK]
+	 --
+	 書庫ID [FK]
+	 ファイル名
+	 サイズ
+ }
+
+@enduml
